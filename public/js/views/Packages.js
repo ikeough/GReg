@@ -24,7 +24,7 @@ app.PackagesView = Backbone.View.extend({
 		
     app.Packages.forEach(function(pkg) {
       if (pkg.get('deprecated')) return;
-      var pkg_view = new app.PackageView({ model: pkg });
+      var pkg_view = new app.PackageView({ model: pkg, isAdmin: false });
       pkg_view.render();
       that.$el.append( pkg_view.$el );
 

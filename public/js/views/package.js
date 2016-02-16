@@ -4,41 +4,40 @@ var app = app || {};
 
 app.PackageView = Backbone.View.extend({
 
-  tagName: 'div',
+    tagName: 'div',
 
-  className: 'package',
+    className: 'package',
 
-  template: _.template( $('#item-template').html() ),
+    template: _.template( $('#item-template').html() ),
 
-  events: {
-	   'click': 'expand' 
-  },
+    events: {
+        'click': 'expand' 
+    },
 
-  toggleDeps: function(event) {
-    this.$('.deps-container').toggle();
-    this.$('.full_deps-container').toggle();
-    event.preventDefault();
-		event.stopPropagation();
-  },
+    toggleDeps: function(event) {
+        this.$('.deps-container').toggle();
+        this.$('.full_deps-container').toggle();
+        event.preventDefault();
+        event.stopPropagation();
+    },
 
-  expand: function(event) {
-		app.currentData.getPackage( this.model.id );
-		//this.$('.data-container').toggle();
-	}, 
+    expand: function(event) {
+        app.currentData.getPackage( this.model.id );
+    }, 
 
-  initialize: function() {
-    this.listenTo(this.model, 'change', this.render);
-  },
+    initialize: function() {
+        this.listenTo(this.model, 'change', this.render);
+    },
 
-  render: function() {
-    
-		this.$el.html( this.template( this.model.toJSON() ) );
-    
-    if (this.model.get('deprecated')){
-      this.$el.addClass('deprecated');
+    render: function() {
+
+        this.$el.html( this.template( this.model.toJSON() ) );
+
+        if (this.model.get('deprecated')){
+            this.$el.addClass('deprecated');
+        }
+        
+        return this;
     }
-    return this;
-    
-  }
 
 });

@@ -20,29 +20,30 @@ var app = app || {};
       version_deps: [],
       full_dl_deps: [],
       versions: [],
-      used_by: []
+      used_by: [],
+      white_list: false
     },
 
     urlRoot: '/package/',
 
     parse: function(stuff) {
 
-			if (stuff.content) {
-				stuff = stuff.content;
-			}
+            if (stuff.content) {
+                stuff = stuff.content;
+            }
 
-      stuff.version_deps = [];
-      stuff.full_dl_deps = [];
+        stuff.version_deps = [];
+        stuff.full_dl_deps = [];
 
-      for (var i = 0; i < stuff.versions.length; i++) {
+        for (var i = 0; i < stuff.versions.length; i++) {
 
         // populate direct dependencies
         stuff.version_deps.push({version: stuff.versions[i].version});
         stuff.version_deps[i].deps = [];
 
         for (var j = 0; j < stuff.versions[i].direct_dependency_ids.length; j++){
-          stuff.version_deps[i].deps.push({ name: stuff.versions[i].direct_dependency_ids[j].name,
-																						_id: stuff.versions[i].direct_dependency_ids[j]._id,
+            stuff.version_deps[i].deps.push({ name: stuff.versions[i].direct_dependency_ids[j].name,
+                                                                                        _id: stuff.versions[i].direct_dependency_ids[j]._id,
                                             version: stuff.versions[i].direct_dependency_versions[j] })
         }
 
@@ -51,15 +52,15 @@ var app = app || {};
         stuff.full_dl_deps[i].deps = [];
 
         for (var j = 0; j < stuff.versions[i].full_dependency_ids.length; j++){
-          stuff.full_dl_deps[i].deps.push({ name: stuff.versions[i].full_dependency_ids[j].name, 
+            stuff.full_dl_deps[i].deps.push({ name: stuff.versions[i].full_dependency_ids[j].name, 
                                             _id: stuff.versions[i].full_dependency_ids[j]._id,
-																							version: stuff.versions[i].full_dependency_versions[j] })
+                                                                                            version: stuff.versions[i].full_dependency_versions[j] })
         }
 
 
-      }
+        }
 
-      return stuff;
+        return stuff;
     }
-
+    
   });

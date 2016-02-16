@@ -158,6 +158,12 @@ body { margin: 0; }
 	font-size: 30px;
 }
 
+#admin_container{
+    display: none;
+	bottom: 0;
+	top: 40px;
+}
+
 .stats_container { 
 	margin-left:auto;
 	margin-right:auto;
@@ -245,45 +251,45 @@ h4 a {
 }
 
 .package {
-	padding-top: 15px;
-  padding-bottom:8px;
-  z-index: 0;
-	background: whitesmoke;
-	border-bottom: solid 1px #DDD;
+    padding-top: 15px;
+    padding-bottom:8px;
+    z-index: 0;
+    background: whitesmoke;
+    border-bottom: solid 1px #DDD;
 }
 
 .title-container {
-  vertical-align:top;
-	display: inline-block;
-  width: 20%;
-  text-overflow: clip;
+    vertical-align:top;
+    display: inline-block;
+    width: 20%;
+    text-overflow: clip;
 }
 
 .votes-downloads-container {
-	vertical-align: top;
-  width: 18%;
-  opacity: 0.65;
-  font-size: 11px;
-	display: inline-block;
-  text-align: right;
+    vertical-align: top;
+    width: 18%;
+    opacity: 0.65;
+    font-size: 11px;
+    display: inline-block;
+    text-align: right;
 }
 
 .votes-downloads-container div {
-  display: inline-block;
-  width: 100px;
-  padding-right: 10px;
-  text-align: left;
+    display: inline-block;
+    width: 100px;
+    padding-right: 10px;
+    text-align: left;
 }
 
 .votes-downloads-container i {
-  margin: 0px 20px; 
+    margin: 0px 20px; 
 }
 
 .data-container {
-	padding: 15px;	
-	margin: 10px 0 0 0;
-	background: #333;
-	color: #BBB;
+    padding: 15px;	
+    margin: 10px 0 0 0;
+    background: #333;
+    color: #BBB;
 }
 
 textarea, input { outline: none; }
@@ -300,11 +306,21 @@ textarea, input { outline: none; }
 }
 
 .description-container {
-  color: #999;
-  padding-top: 2px;
-	vertical-align:top;
-	display: inline-block;
-	width: 55%;
+    color: #999;
+    padding-top: 2px;
+    vertical-align:top;
+    display: inline-block;
+    width: 55%;
+}
+
+.whitelist-container{
+    color: #999;
+    padding-top: 2px;
+    vertical-align: middle;
+    display: inline-block;
+    opacity: 0.65;
+    font-size: 11px;
+    display: inline-block;
 }
 
 .package:hover {
@@ -318,8 +334,8 @@ textarea, input { outline: none; }
 
 .showdeps {
 	font-size: 11px;
-  text-transform: uppercase;
-  margin-top: 10px;
+    text-transform: uppercase;
+    margin-top: 10px;
 }
 
 .title {
@@ -425,6 +441,10 @@ input:focus, textarea:focus {
 .list {
  	top: 40px;
 	bottom: 0px;
+}
+
+.admin_list{
+    top:40px;
 }
 
 body {

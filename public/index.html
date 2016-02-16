@@ -12,91 +12,118 @@
 
 <body>
 
-   <div id="app">
+    <div id="app">
      
-    <div id="nav_container" class="row">
-			<a class="nav" href ="#" data-target="browse">Browse</a>
-			<a class="nav" href ="#" data-target="search">Search</a>
-		</div>
+        <div id="nav_container" class="row">
+                <a class="nav" href ="#" data-target="browse">Browse</a>
+                <a class="nav" href ="#" data-target="search">Search</a>
+                <a class="nav" href ="#" data-target="admin">Admin</a>
+        </div>
    
-    <div id="home_container" class="content row col">
-			<div id="home_inner_container" class="row col">
-				<h1>Dynamo Package Manager</h1>
-			</div>	
-		</div>
+        <div id="home_container" class="content row col">
+            <div id="home_inner_container" class="row col">
+                <h1>Dynamo Package Manager</h1>
+            </div>	
+        </div>
  		
-    <div id= "browse_container" class = "content row scroll-y">
-    		
-				<div class="loading_container row col"><img src="assets/476.gif" /> </div>	
-   			
-				<div style="width: 100%;background: #222; margin-bottom: 10px">
-					<div class="stats_container" style="padding-top: 30px; margin-top: 0">
-						<div style="width: 550px; margin: auto;">
-							<h1 style="display: block; height: 60px; color: #888"><a href="http://www.dynamobim.org"><img src="assets/logo.png" style="display: block; float: left; padding-right: 20px;height: 50px"></a><span style=""> Package Manager</span></h1>
-							<h4 style="padding-bottom: 5px; color: #666">Share and discover workflows for <a style="color: #888" href="http://www.dynamobim.org">Dynamo visual programming</a>
-							</h4>
-						
-						</div>
-					</div>
-				</div>
-				
-				<div id="overall-stats-container" class="stats_container"></div>	
-				
-				<div id="package_stats"  class="stats_container">
-					<h3>Packages</h3> 
-				</div>
+        <div id= "browse_container" class = "content row scroll-y">
+                
+            <div class="loading_container row col"><img src="assets/476.gif" ></div>	
 
-   			<div id="author_stats" class="stats_container"><h3>Authors</h3></div>
-		
-    </div>
+            <div style="width: 100%;background: #222; margin-bottom: 10px">
+                <div class="stats_container" style="padding-top: 30px; margin-top: 0">
+                    <div style="width: 550px; margin: auto;">
+                        <h1 style="display: block; height: 60px; color: #888"><a href="http://www.dynamobim.org"><img src="assets/logo.png" style="display: block; float: left; padding-right: 20px;height: 50px"></a><span style=""> Package Manager</span></h1>
+                        <h4 style="padding-bottom: 5px; color: #666">Share and discover workflows for <a style="color: #888" href="http://www.dynamobim.org">Dynamo visual programming</a>
+                        </h4>
+                    </div>
+                </div>
+            </div>
 
-		<div id="data_container" class="col scroll-y">
-			 <i style="float:right; margin: 20px" class="exit-data icon-white icon-remove" ></i>	
-			<div id="data"></div>			
-		</div>
+            <div id="overall-stats-container" class="stats_container"></div>	
 
-    <div id="search_container" class="content row">
-	    <div id="inner_search_container" class="row">
+            <div id="package_stats"  class="stats_container">
+                <h3>Packages</h3> 
+            </div>
 
-				<input class="search" placeholder="Search..."/>
-    	  <div id="sorting">
-      	  <span style="color: grey"> Sort by </span>
-       	  <span class="sort" data-sort="name">Name</span>
-       	  <span class="sort" data-sort="group">Group</span>
-					<span class="sort" data-sort="votes">Votes</span>
-      	  <span class="sort" data-sort="downloads">Downloads</span>
-      	</div>
-			</div>
+            <div id="author_stats" class="stats_container"><h3>Authors</h3></div>
+            
+        </div>
+
+        <div id="data_container" class="col scroll-y">
+                <i style="float:right; margin: 20px" class="exit-data icon-white icon-remove" ></i>	
+            <div id="data"></div>			
+        </div>
+
+        <div id="search_container" class="content row">
+            <div id="inner_search_container" class="row">
+                <input class="search" placeholder="Search..."/>
+                <div id="sorting">
+                    <span style="color: grey"> Sort by </span>
+                    <span class="sort" data-sort="name">Name</span>
+                    <span class="sort" data-sort="group">Group</span>
+                    <span class="sort" data-sort="votes">Votes</span>
+                    <span class="sort" data-sort="downloads">Downloads</span>
+                </div>
+            </div>
+            <div class ="list row scroll-y"></div>
+            <div class="loading_container row col"><img src="assets/476.gif" ></div>
+        </div>
+    
+        <div id="admin_container" class="content row">
+            <div class="admin_list row scroll-y">
+            </div>
+        </div>
  
-			<div class ="list row scroll-y">
-    		<div class="loading_container row col"><img src="assets/476.gif" /> </div> 
-			</div>
-
     </div>
- 
-  </div>
 
-  <script type="text/template" id="item-template">
+    <script type="text/template" id="item-template">
 
-    <div class="title-container" >
-      <h2 class="name searchfield"><%- name %><% if(deprecated){ %><span style="text-transform: uppercase; font-size: 12px; padding-left: 10px;"> (Deprecated) </> <% } %> </h2>
-    </div>
-	
-    <div class="description-container" >
-  		<p class="description searchfield"><%- description %></p>
-    </div>
-		
-		<div class="group-container">
-      <p class="group searchfield"><%- group %></p>
-		</div>
-		
-		<div class="votes-downloads-container">  
-		  <div title="Number of downloads"><i class="icon-download-alt" style="display:inline-block" /><span class="downloads"> <%- downloads %></span> </div>
-      <div title="Votes"><i class="icon-chevron-up" style="display:inline-block" /><span class="votes"> <%- votes %> </span> </div>
-	 </div>
- 
-</script>
+        <div class="title-container" >
+            <h2 class="name searchfield"><%- name %><% if(deprecated){ %><span style="text-transform: uppercase; font-size: 12px; padding-left: 10px;"> (Deprecated) </> <% } %> </h2>
+        </div>
 
+        <div class="description-container" >
+            <p class="description searchfield"><%- description %></p>
+        </div>
+        
+        <div class="group-container">
+            <p class="group searchfield"><%- group %></p>
+        </div>
+
+        <div class="votes-downloads-container">  
+            <div title="Number of downloads">
+                <i class="icon-download-alt" style="display:inline-block" />
+                <span class="downloads"> <%- downloads %></span> 
+            </div>
+            <div title="Votes">
+                <i class="icon-chevron-up" style="display:inline-block" />
+                <span class="votes"> <%- votes %> </span> 
+            </div>
+        </div>
+
+    </script>
+
+    <script type="text/template" id="admin-template">
+
+        <div class="title-container" >
+            <h2 class="name searchfield"><%- name %><% if(deprecated){ %><span style="text-transform: uppercase; font-size: 12px; padding-left: 10px;"> (Deprecated) </> <% } %> </h2>
+        </div>
+
+        <div class="description-container" >
+            <p class="description searchfield"><%- description %></p>
+        </div>
+        
+        <div class="group-container">
+            <p class="group searchfield"><%- group %></p>
+        </div>
+        
+        <div class="whitelist-container">
+            <i class="icon-thumbs-up" style="display:inline-block"></i>
+            <input id="isWhitelistedCheckbox" type="checkbox" <% if (white_list) { %>checked="checked"<% } %> />
+        </div>
+
+    </script>
   
   <script type="text/template" id="author-data-template">
 
@@ -274,36 +301,37 @@
 	</script>
 
 
-  <script type="text/template" id="stats-template">
-    <span id="package-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
-  </script>
+    <script type="text/template" id="stats-template">
+        <span id="package-count"><strong><%= remaining %></strong> <%= remaining === 1 ? 'item' : 'items' %> left</span>
+    </script>
 
-  <script src="js/lib/jquery.min.js"></script>
-  <script src="js/lib/list.js"></script>
-  <script src="js/lib/highlight.min.js"></script>
-  <script src="js/lib/underscore-min.js"></script>
-  <script src="js/lib/backbone-min.js"></script>
-  <script src="js/lib/backbone.localStorage.js"></script>
+    <script src="js/lib/jquery.min.js"></script>
+    <script src="js/lib/list.js"></script>
+    <script src="js/lib/highlight.min.js"></script>
+    <script src="js/lib/underscore-min.js"></script>
+    <script src="js/lib/backbone-min.js"></script>
+    <script src="js/lib/backbone.localStorage.js"></script>
 
-  <script src="js/models/package.js"></script>
-  <script src="js/models/stat.js"></script>
+    <script src="js/models/package.js"></script>
+    <script src="js/models/stat.js"></script>
 	<script src="js/models/Data.js"></script>
 	<script src="js/models/Author.js"></script>
 	
 	<script src="js/collections/packages.js"></script>
-  <script src="js/collections/stats.js"></script>
+    <script src="js/collections/stats.js"></script>
 
-  <script src="js/views/package.js"></script>
-  <script src="js/views/AuthorStat.js"></script>
-  <script src="js/views/PackageStat.js"></script>
-  <script src="js/views/Packages.js"></script>
-  <script src="js/views/Stats.js"></script> 
-  <script src="js/views/Nav.js"></script>
-  <script src="js/routers/router.js"></script>
-	<script src="js/views/Data.js"></script>
-	<script src="js/views/AuthorData.js"></script>
-	<script src="js/views/PackageData.js"></script>
-  
+    <script src="js/views/package.js"></script>
+    <script src="js/views/AuthorStat.js"></script>
+    <script src="js/views/PackageStat.js"></script>
+    <script src="js/views/Packages.js"></script>
+    <script src="js/views/Stats.js"></script> 
+    <script src="js/views/Nav.js"></script>
+    <script src="js/routers/router.js"></script>
+    <script src="js/views/Data.js"></script>
+    <script src="js/views/AuthorData.js"></script>
+    <script src="js/views/PackageData.js"></script>
+    <script src="js/views/Admin.js"></script>
+    <script src="js/views/PackageAdmin.js"></script>
 	<script src="js/app.js"></script>
 
 </body>
