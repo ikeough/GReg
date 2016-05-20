@@ -1,0 +1,12 @@
+/home/ec2-user/logs/ERR
+/home/ec2-user/logs/OUT
+/home/ec2-user/logs/LOG {
+  weekly
+  rotate 52
+  nomissingok
+  notifempty
+  compress
+  copytruncate
+  dateext
+  dateformat .%Y-%m-%d  
+}
